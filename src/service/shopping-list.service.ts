@@ -20,4 +20,7 @@ export class ShoppinglistService{
        return this.ShoppingListRef.push(item)
     }
 
+    editListItem(item: Item){
+        return this.ShoppingListRef.update(item.key, item)
+    }
 }
