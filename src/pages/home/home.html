@@ -15,4 +15,21 @@
 
 <ion-content padding>
 
+    <h1>
+        <button ion-button color="dark" full round (click)="scan()">Start Scan</button>
+      </h1>
+      
+      <ion-card *ngIf="itemFound">
+        <ion-card-header>
+          <h2>Price: $ {{selectedItem.price}}</h2>
+        </ion-card-header>
+        <ion-card-content>
+          <ul>
+            <li>{{selectedItem.plu}}</li>
+            <li>{{selectedItem.name}}</li>
+            <li>{{selectedItem.price}}</li>
+          </ul>
+        </ion-card-content>
+      </ion-card>
+
 </ion-content>

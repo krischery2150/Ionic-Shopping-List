@@ -10,6 +10,8 @@ import { AngularFireDatabaseModule }  from 'angularfire2/database';
 import { MyApp } from './app.component';
 import { FIREBASE_CONFIG } from '../firebase.credentials';
 import { ShoppinglistService } from '../service/shopping-list.service';
+import { ToastService } from '../service/toast.service';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { ShoppinglistService } from '../service/shopping-list.service';
     StatusBar,
     SplashScreen,
     ShoppinglistService,
+    ToastService,
+    BarcodeScanner,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

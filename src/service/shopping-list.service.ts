@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { AngularFireDatabase } from "angularfire2/database";
 import { Item } from "../models/item/item.model";
+import { Observable } from "rxjs";
 
 
 
@@ -8,7 +9,7 @@ import { Item } from "../models/item/item.model";
 
 export class ShoppinglistService{
 
-    private ShoppingListRef = this.db.list('shopping-list')
+    private ShoppingListRef  = this.db.list<Item>('shopping-list')
 
     constructor(private db: AngularFireDatabase){ }
 
@@ -22,5 +23,9 @@ export class ShoppinglistService{
 
     editListItem(item: Item){
         return this.ShoppingListRef.update(item.key, item)
+    }
+
+    removeListItem(item: Item){
+        return this.ShoppingListRef.remove(item.key)
     }
 }
