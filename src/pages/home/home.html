@@ -18,8 +18,11 @@
     <h1>
         <button ion-button color="dark" full round (click)="scan()">Start Scan</button>
       </h1>
-      
-      <ion-card *ngIf="itemFound">
+      <button ion-button block (click)="itemAddPage()">
+        See Member
+    </button>
+
+      <ion-card *ngIf="itemFound" >
         <ion-card-header>
           <h2>Price: $ {{selectedItem.price}}</h2>
         </ion-card-header>
@@ -32,4 +35,15 @@
         </ion-card-content>
       </ion-card>
 
+      <ion-card *ngIf="barcode" push-detail>
+          <ion-card-header>
+            <h2>No Product with barcode: {{ barcode }}was found</h2>
+          </ion-card-header>
+          <ion-card-content>
+            <span color='primary'> To Create a member with this barcode; Click below.</span>
+            <button ion-button block  (click)="itemAddPage()">
+              Create New Member
+            </button>
+          </ion-card-content>
+        </ion-card>
 </ion-content>

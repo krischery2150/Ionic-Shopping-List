@@ -19,6 +19,8 @@ import { ToastService } from '../../service/toast.service';
 })
 export class AddItemPage {
 
+  barcode: string ;
+
   item: Item = {
     name:'',
     quantity: 1,
@@ -27,6 +29,7 @@ export class AddItemPage {
   }
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private shopping: ShoppinglistService, private toast: ToastService) {
+    // this.barcode = this.navParams.get('barcode')
   }
 
   addItem(item: Item){
@@ -37,7 +40,7 @@ export class AddItemPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AddItemPage');
+    this.item.plu = this.navParams.get('barcode')
   }
 
 }

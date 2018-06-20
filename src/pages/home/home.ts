@@ -20,7 +20,8 @@ export class HomePage {
 
   shoppingitems: any ;
   selectedItem: any;
-  itemFound: any;
+  itemFound: boolean;
+  barcode: string;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams, 
@@ -44,14 +45,19 @@ export class HomePage {
         this.itemFound = true;
         console.log('Item is found')
       } else {
-        // this.itemFound = false;
-        console.log('Item wasnt found' + barcodeData.text )
+        this.itemFound = false;
+        this.barcode = barcodeData.text
+        console.log('Item wasnt found' + barcodeData.text );
       }
     }, (err) => {
       console.log(err)
     });
   }
 
-  099482412845
+  itemAddPage(){
+    this.navCtrl.push('AddItemPage', { barcode: this.barcode})
+  }
+
+
 
 }
