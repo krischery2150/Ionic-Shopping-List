@@ -5,12 +5,6 @@ import { ShoppinglistService } from '../../service/shopping-list.service';
 import { ToastService } from '../../service/toast.service';
 
 
-/**
- * Generated class for the AddItemPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -22,6 +16,7 @@ export class AddItemPage {
   barcode: string ;
 
   item: Item = {
+    key:'',
     name:'',
     quantity: 1,
     price: 0,
@@ -29,7 +24,7 @@ export class AddItemPage {
   }
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private shopping: ShoppinglistService, private toast: ToastService) {
-    // this.barcode = this.navParams.get('barcode')
+
   }
 
   addItem(item: Item){

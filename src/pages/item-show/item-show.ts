@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Item } from '../../models/item/item.model';
 
 /**
  * Generated class for the ItemShowPage page.
@@ -17,11 +18,18 @@ export class ItemShowPage {
 
   barcode: string;
 
+  item: Item = {
+    name:'',
+    quantity: 1,
+    price: 0,
+    plu: ''
+  }
+  
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewWillLoad() {
-     this.barcode = this.navParams.get('barcode')
+     this.item = this.navParams.get('item')
   }
 
 }

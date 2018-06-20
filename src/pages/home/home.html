@@ -18,9 +18,7 @@
     <h1>
         <button ion-button color="dark" full round (click)="scan()">Start Scan</button>
       </h1>
-      <button ion-button block (click)="itemAddPage()">
-        See Member
-    </button>
+
 
       <ion-card *ngIf="itemFound" >
         <ion-card-header>
@@ -32,6 +30,9 @@
             <li>{{selectedItem.name}}</li>
             <li>{{selectedItem.price}}</li>
           </ul>
+          <button ion-button block (click)="itemShowPage()">
+            See Member
+        </button>
         </ion-card-content>
       </ion-card>
 

@@ -2,14 +2,10 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { ShoppinglistService } from '../../service/shopping-list.service';
+import { ToastService } from '../../service/toast.service';
 
 
-/**
- * Generated class for the HomePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -26,7 +22,8 @@ export class HomePage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams, 
               private barcodeScanner: BarcodeScanner,
-              private shopping: ShoppinglistService) {
+              private shopping: ShoppinglistService,
+              private toast: ToastService) {
 
              this.shopping.getShoppingList()
             .valueChanges()
@@ -43,11 +40,11 @@ export class HomePage {
       this.selectedItem = this.shoppingitems.find(item => item.plu === barcodeData.text);
       if(this.selectedItem !== undefined) {
         this.itemFound = true;
-        console.log('Item is found')
+        this.toast.show(`Member Found`);
       } else {
         this.itemFound = false;
-        this.barcode = barcodeData.text
-        console.log('Item wasnt found' + barcodeData.text );
+        this.barcode = barcodeData.text;
+        this.toast.show(`Member was not found`);
       }
     }, (err) => {
       console.log(err)
@@ -58,6 +55,9 @@ export class HomePage {
     this.navCtrl.push('AddItemPage', { barcode: this.barcode})
   }
 
+  itemShowPage(){
+    this.navCtrl.push('ItemShowPage', {item: this.selectedItem})
+  }
 
 
 }
